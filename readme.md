@@ -34,7 +34,7 @@ So, if you still haven't found the solution and wish to do it on your own, this 
 Use the utility `retrieve.js` to retrieve the daily challenges and the input data. Usage example:
 
 ```
-node --env-file=.env retrieve.js 7
+npm run get 7
 ```
 
 where `7` is the day you want to retrieve challenge and data from. They'll be saved as `readme.md` and `input.txt`, respectively, in a folder named `day-7` (in this case).
