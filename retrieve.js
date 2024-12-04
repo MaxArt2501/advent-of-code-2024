@@ -4,19 +4,19 @@ import { finished } from 'node:stream/promises';
 
 const ROOT_URL = 'https://adventofcode.com/';
 
-const { env } = process;
+const { YEAR, SESSION_TOKEN } = process.env;
 
-if (!env.YEAR) {
+if (!YEAR) {
   console.error('No year defined! Set it up the variable YEAR in the file .env');
   process.exit(1);
 }
-if (!env.SESSION_TOKEN) {
+if (!SESSION_TOKEN) {
   console.error('No session token defined! Set it up the variable SESSION_TOKEN in the file .env');
   process.exit(2);
 }
 
 const download = async (url, filePath) => {
-  const res = await fetch(url, { headers: { Cookie: `session=${env.SESSION_TOKEN}` } });
+  const res = await fetch(url, { headers: { Cookie: `session=${SESSION_TOKEN}` } });
   if (res.status !== 200) {
     throw Error(`Cannot get '${url}'`);
   }
@@ -25,7 +25,7 @@ const download = async (url, filePath) => {
 };
 
 const getPage = async (url) => {
-  const res = await fetch(url, { headers: { Cookie: `session=${env.SESSION_TOKEN}` } });
+  const res = await fetch(url, { headers: { Cookie: `session=${SESSION_TOKEN}` } });
   if (res.status !== 200) {
     throw Error(`Cannot get '${url}'`);
   }
@@ -47,7 +47,7 @@ if (!existsSync(outDir)) {
   mkdirSync(outDir);
 }
 
-const BASE_URL = `${ROOT_URL}${env.YEAR}/day/${day}`;
+const BASE_URL = `${ROOT_URL}${YEAR}/day/${day}`;
 Promise.all([
   download(BASE_URL + '/input', outDir + '/input.txt'),
   getPage(BASE_URL).then(page => {

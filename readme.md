@@ -37,7 +37,7 @@ Use the utility `retrieve.js` to retrieve the daily challenges and the input dat
 npm run get 7
 ```
 
-where `7` is the day you want to retrieve challenge and data from. They'll be saved as `readme.md` and `input.txt`, respectively, in a folder named `day-7` (in this case).
+where `7` is the day you want to retrieve challenge and data from (you can omit it to get the challenge of the day - only works between the 1st and 25th of ~~December~~... every month, actually!). They'll be saved as `readme.md` and `input.txt`, respectively, in a folder named `day-7` (in this case).
 
 In order to run the script, first you must create a `.env` file containing two properties:
 
