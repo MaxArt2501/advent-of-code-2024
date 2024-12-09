@@ -56,6 +56,7 @@ Promise.all([
       .replace(/<pre><code>(?=[^<]*?<em)([\s\S]+?)<\/code><\/pre>/g, (_, m1) => `<pre>${m1.replace(/<(\/?)em>/g, '<$1b>')}</pre>`)
       .replace(/<pre><code>\n*|\n*<\/code><\/pre>/g, '\n```\n')
       .replace(/<code><em>([^<]+)<\/em><\/code>/g, '**`$1`**')
+      .replace(/<span class="quiet">([^<]+?)<\/span>/g, '*$1*')
       .replace(/<\/?code>/g, '`')
       .replace(/<\/?em>/g, '**')
       .replace(/<p>/g, '\n')
